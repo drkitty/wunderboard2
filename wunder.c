@@ -57,7 +57,8 @@ void initialize( void )
 	USART_transmit('\f');	// Send form feed to clear the terminal.
 	USART_send_string("WunderBoard initializing...\r\n");
 
-	USART_send_string("\tSetting ADC prescaler and disabling free running mode...\r\n");
+	USART_send_string("\tSetting ADC prescaler and disabling free running "
+			"mode...\r\n");
 	setup_ADC(ADC_PRESCALER_32, FALSE);
 
 	USART_send_string("\tEnabling ADC...\r\n");
@@ -68,7 +69,8 @@ void initialize( void )
 
 	// Configure IO //
 	USART_send_string("\tConfiguring IO...\r\n");
-	//DDRx corresponds to PORTx/PINx, dependng on direction of data flow -- PORT for output, PIN for input
+	//DDRx corresponds to PORTx/PINx, dependng on direction of data flow --
+	//PORT for output, PIN for input
 	DDRA = 0x00;	// Buttons and switches
 	DDRB = 0xE7;	// Red enable, green enable and audio out
 	DDRC = 0xff;	// Discrete LEDs
