@@ -54,29 +54,29 @@ SRC =	$(TARGET).c \
 UNAME = $(shell uname)
 
 ifeq ($(UNAME),Linux)
-ENV=unix
+	ENV=unix
 endif
 
 ifeq ($(UNAME),Darwin)
-ENV=unix
+	ENV=unix
 endif
 
 ifndef ENV
-ENV=windows
+	ENV=windows
 endif
 
 ifeq ($(ENV),unix)
-PROGRAM = dfu-programmer
-PROGRAMFLAGS = $(MCU)
-ERASE = erase
-FLASH = flash "$(TARGET).hex"
-START = start
+	PROGRAM = dfu-programmer
+	PROGRAMFLAGS = $(MCU)
+	ERASE = erase
+	FLASH = flash "$(TARGET).hex"
+	START = start
 else
-PROGRAM = "C:/Program Files (x86)/Atmel/Flip 3.4.1/bin/batchisp.exe"
-PROGRAMFLAGS = -device at90usb646 -hardware USB
-ERASE = -operation erase F
-FLASH = -operation loadbuffer "$(TARGET).hex" program verify
-START = -operation start noreset 0
+	PROGRAM = "C:/Program Files (x86)/Atmel/Flip 3.4.1/bin/batchisp.exe"
+	PROGRAMFLAGS = -device at90usb646 -hardware USB
+	ERASE = -operation erase F
+	FLASH = -operation loadbuffer "$(TARGET).hex" program verify
+	START = -operation start noreset 0
 endif
 
 # MCU name, you MUST set this to match the board you are using
@@ -458,11 +458,11 @@ ELFSIZE = $(SIZE) $(TARGET).elf
 
 sizebefore:
 	@if test -f $(TARGET).elf; then echo; echo $(MSG_SIZE_BEFORE); $(ELFSIZE); \
-	2>/dev/null; echo; fi
+		2>/dev/null; echo; fi
 
 sizeafter:
 	@if test -f $(TARGET).elf; then echo; echo $(MSG_SIZE_AFTER); $(ELFSIZE); \
-	2>/dev/null; echo; fi
+		2>/dev/null; echo; fi
 
 
 
@@ -546,8 +546,8 @@ extcoff: $(TARGET).elf
 	@echo
 	@echo $(MSG_EEPROM) $@
 	-$(OBJCOPY) -j .eeprom --set-section-flags=.eeprom="alloc,load" \
-	--change-section-lma .eeprom=0 --no-change-warnings -O $(FORMAT) $< $@ || \
-	exit 0
+		--change-section-lma .eeprom=0 --no-change-warnings -O $(FORMAT) $< $@ || \
+		exit 0
 
 # Create extended listing file from ELF output file.
 %.lss: %.elf
@@ -649,5 +649,5 @@ $(shell mkdir $(OBJDIR) 2>/dev/null)
 
 # Listing of phony targets.
 .PHONY : all begin finish end sizebefore sizeafter gccversion \
-build elf hex eep lss sym coff extcoff \
-clean clean_list program debug gdb-config
+	build elf hex eep lss sym coff extcoff \
+	clean clean_list program debug gdb-config
