@@ -105,7 +105,6 @@ void initialize( void )
 int main(int argc, char **argv)
 {
 	initialize();
-	clear_array();
 
 	while(1){
 
