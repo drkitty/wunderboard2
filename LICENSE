@@ -1,0 +1,32 @@
+Most of the source files contain a license section. Here are the licenses for
+those that don't.
+
+diskio.c, diskio.h:
+From [http://elm-chan.org/fsw/ff/en/appnote.html#license] (retrieved 2013-4-22):
+
+This is a copy of the FatFs license document that included in the source codes.
+
+/*----------------------------------------------------------------------------/
+/  FatFs - FAT file system module  R0.09b                    (C)ChaN, 2013
+/-----------------------------------------------------------------------------/
+/ FatFs module is a generic FAT file system module for small embedded systems.
+/ This is a free software that opened for education, research and commercial
+/ developments under license policy of following trems.
+/
+/  Copyright (C) 2013, ChaN, all right reserved.
+/
+/ * The FatFs module is a free software and there is NO WARRANTY.
+/ * No restriction on use. You can use, modify and redistribute it for
+/   personal, non-profit or commercial products UNDER YOUR RESPONSIBILITY.
+/ * Redistributions of source code must retain the above copyright notice.
+/
+/-----------------------------------------------------------------------------/
+
+Therefore FatFs license is one of the BSD-style license but there is a big
+difference. Because FatFs is for embedded projects, the conditions for
+redistributions in binary form, such as embedded code, hex file and binary
+library, is not specified to increase its usability. The documentation of the
+distributions need not include about FatFs and its license document, and it may
+also. Of course FatFs is compatible with the projects under GNU GPL. When
+redistribute it with any modification, the license can also be changed to GNU
+GPL or BSD-style license.
