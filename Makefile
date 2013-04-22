@@ -47,9 +47,9 @@ TARGET = wunder
 
 # List C source files here. (C dependencies are automatically generated.)
 SRC =	$(TARGET).c \
-	usart.c \
-	adc.c \
-	diskio.c
+		usart.c \
+		adc.c \
+		diskio.c
 
 UNAME = $(shell uname)
 
@@ -224,7 +224,8 @@ CPPFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
 #             files -- see avr-libc docs [FIXME: not yet described there]
 #  -listing-cont-lines: Sets the maximum number of continuation lines of hex
 #       dump that will be displayed for a given single line of source input.
-ASFLAGS = $(ADEFS) -Wa,-adhlns=$(<:%.S=$(OBJDIR)/%.lst),-gstabs,--listing-cont-lines=100
+ASFLAGS = $(ADEFS) -Wa,-adhlns=$(<:%.S=$(OBJDIR)/%.lst),-gstabs,\
+	--listing-cont-lines=100
 
 
 #---------------- Library Options ----------------
@@ -398,10 +399,12 @@ MSG_CREATING_LIBRARY = Creating library:
 
 
 # Define all object files.
-OBJ = $(SRC:%.c=$(OBJDIR)/%.o) $(CPPSRC:%.cpp=$(OBJDIR)/%.o) $(ASRC:%.S=$(OBJDIR)/%.o)
+OBJ = $(SRC:%.c=$(OBJDIR)/%.o) $(CPPSRC:%.cpp=$(OBJDIR)/%.o) \
+	$(ASRC:%.S=$(OBJDIR)/%.o)
 
 # Define all listing files.
-LST = $(SRC:%.c=$(OBJDIR)/%.lst) $(CPPSRC:%.cpp=$(OBJDIR)/%.lst) $(ASRC:%.S=$(OBJDIR)/%.lst)
+LST = $(SRC:%.c=$(OBJDIR)/%.lst) $(CPPSRC:%.cpp=$(OBJDIR)/%.lst) \
+	$(ASRC:%.S=$(OBJDIR)/%.lst)
 
 
 # Compiler flags to generate dependency files.
@@ -475,7 +478,8 @@ program: all
 	$(PROGRAM) $(PROGRAMFLAGS) $(FLASH)
 	$(PROGRAM) $(PROGRAMFLAGS) $(START)
 
-#	"batchisp.exe" -device at90usb1287 -hardware USB -operation erase F loadbuffer "$(TARGET).hex" program verify start noreset 0
+#	"batchisp.exe" -device at90usb1287 -hardware USB -operation erase F \
+#	loadbuffer "$(TARGET).hex" program verify start noreset 0
 
 
 # Generate avr-gdb config/init file which does the following:
@@ -495,7 +499,8 @@ endif
 
 debug: gdb-config $(TARGET).elf
 ifeq ($(DEBUG_BACKEND), avarice)
-	@echo Starting AVaRICE - Press enter when "waiting to connect" message displays.
+	@echo Starting AVaRICE - Press enter when "waiting to connect" message \
+		displays.
 	@$(WINSHELL) /c start avarice --jtag $(JTAG_DEV) --erase --program --file \
 	$(TARGET).elf $(DEBUG_HOST):$(DEBUG_PORT)
 	@$(WINSHELL) /c pause
@@ -541,7 +546,8 @@ extcoff: $(TARGET).elf
 	@echo
 	@echo $(MSG_EEPROM) $@
 	-$(OBJCOPY) -j .eeprom --set-section-flags=.eeprom="alloc,load" \
-	--change-section-lma .eeprom=0 --no-change-warnings -O $(FORMAT) $< $@ || exit 0
+	--change-section-lma .eeprom=0 --no-change-warnings -O $(FORMAT) $< $@ || \
+	exit 0
 
 # Create extended listing file from ELF output file.
 %.lss: %.elf
