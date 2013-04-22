@@ -42,7 +42,6 @@
 #include "diskio.h"
 #include "types.h"
 #include "usart.h"
-#include "leds.h"
 
 // 9600 baud
 #define BAUD_RATE 51

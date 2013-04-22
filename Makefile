@@ -49,8 +49,7 @@ TARGET = wunder
 SRC =	$(TARGET).c \
 	usart.c \
 	adc.c \
-	diskio.c \
-	leds.c
+	diskio.c
 
 UNAME = $(shell uname)
 
