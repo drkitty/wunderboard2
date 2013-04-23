@@ -15,6 +15,22 @@
 *.exe
 *.out
 *.app
+*.elf
+
+# Disassemblies
+*.lss
+
+
+# Hex dumps
+*.hex
+
+# Miscellaneous Wunderboard files and directories
+# FIXME: Be more descriptive
+*.map
+*.sym
+*.eep
+obj
+.dep
 
 # Vim swap files
 .*.sw?
