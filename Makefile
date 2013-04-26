@@ -66,13 +66,15 @@ ifeq ($(ENV),unix)
 	PROGRAM = dfu-programmer
 	PROGRAMFLAGS = $(MCU)
 	ERASE = erase
-	FLASH = flash "$(TARGET).hex"
+	FLASH = flash
+	FLASHSUFFIX =
 	START = start
 else
 	PROGRAM = "C:/Program Files (x86)/Atmel/Flip 3.4.1/bin/batchisp.exe"
 	PROGRAMFLAGS = -device at90usb646 -hardware USB
 	ERASE = -operation erase F
-	FLASH = -operation loadbuffer "$(TARGET).hex" program verify
+	FLASH = -operation loadbuffer
+	FLASHSUFFIX = program verify
 	START = -operation start noreset 0
 endif
 
@@ -423,7 +425,7 @@ gccversion :
 # Program the device.
 program: all
 	$(PROGRAM) $(PROGRAMFLAGS) $(ERASE)
-	$(PROGRAM) $(PROGRAMFLAGS) $(FLASH)
+	$(PROGRAM) $(PROGRAMFLAGS) $(FLASH) $(TARGET).hex $(FLASHSUFFIX)
 	$(PROGRAM) $(PROGRAMFLAGS) $(START)
 
 #	"batchisp.exe" -device at90usb1287 -hardware USB -operation erase F \
