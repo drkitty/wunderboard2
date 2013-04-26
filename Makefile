@@ -422,7 +422,7 @@ gccversion :
 
 
 # Program the device.
-program: all
+program: $(TARGET).hex
 	$(PROGRAM) $(PROGRAMFLAGS) $(ERASE)
 	$(PROGRAM) $(PROGRAMFLAGS) $(FLASH) $(TARGET).hex $(FLASHSUFFIX)
 	$(PROGRAM) $(PROGRAMFLAGS) $(START)
