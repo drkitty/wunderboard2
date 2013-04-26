@@ -390,11 +390,6 @@ build: gccversion sizebefore $(TARGET).hex sizeafter
 #build: lib
 
 
-elf: $(TARGET).elf
-hex: $(TARGET).hex
-eep: $(TARGET).eep
-lss: $(TARGET).lss
-sym: $(TARGET).sym
 LIBNAME=lib$(TARGET).a
 lib: $(LIBNAME)
 
@@ -567,9 +562,7 @@ $(OBJDIR)/%.o : %.S
 
 
 # Target: clean project.
-clean: begin clean_list end
-
-clean_list :
+clean :
 	@echo
 	@echo $(MSG_CLEANING)
 	$(REMOVE) $(TARGET).hex
@@ -597,6 +590,5 @@ $(shell mkdir $(OBJDIR) 2>/dev/null)
 
 
 # Listing of phony targets.
-.PHONY : all begin finish end sizebefore sizeafter gccversion \
-	build elf hex eep lss sym coff extcoff \
-	clean clean_list program debug gdb-config
+.PHONY : finish sizebefore sizeafter gccversion build coff extcoff clean \
+	program debug gdb-config
