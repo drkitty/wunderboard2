@@ -590,5 +590,5 @@ $(shell mkdir $(OBJDIR) 2>/dev/null)
 
 
 # Listing of phony targets.
-.PHONY : finish sizebefore sizeafter gccversion build coff extcoff clean \
+.PHONY : sizebefore sizeafter gccversion build coff extcoff clean \
 	program debug gdb-config
