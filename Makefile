@@ -46,10 +46,11 @@ TARGET = wunder
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC =	$(TARGET).c \
-		usart.c \
-		adc.c \
-		diskio.c
+SRC = \
+	  $(TARGET).c \
+	  usart.c \
+	  adc.c \
+	  diskio.c
 
 UNAME = $(shell uname)
 
