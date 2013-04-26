@@ -44,9 +44,8 @@
 # Target file name (without extension).
 TARGET = wunder
 
-
-# List C source files here. (C dependencies are automatically generated.)
 SRC = $(wildcard *.c)
+
 
 UNAME = $(shell uname)
 
