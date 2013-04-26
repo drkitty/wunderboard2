@@ -383,15 +383,13 @@ ALL_ASFLAGS = -mmcu=$(MCU) -I. -x assembler-with-cpp $(ASFLAGS)
 
 
 
-#all: gccversion sizebefore build sizeafter
-
 # Default target.
-# Change the build target to build a HEX file or a library.
 build: gccversion sizebefore $(TARGET).hex sizeafter
-#build: lib
 
 
 LIBNAME=lib$(TARGET).a
+
+# Build a library.
 lib: $(LIBNAME)
 
 
