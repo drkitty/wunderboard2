@@ -564,6 +564,7 @@ $(OBJDIR)/%.o : %.S
 clean :
 	@echo
 	@echo $(MSG_CLEANING)
+	$(REMOVE) $(GDBINIT_FILE)
 	$(REMOVE) $(TARGET).hex
 	$(REMOVE) $(TARGET).eep
 	$(REMOVE) $(TARGET).cof
