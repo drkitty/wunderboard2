@@ -132,7 +132,7 @@ void setup_ADC(uint8_t prescale, BOOL free_run)
 
 uint8_t read_ADC(uint8_t channel)
 {	
-	uint8_t temp, temp2;
+	uint8_t temp;
 	
 	ADC_set_channel(channel);	// Set ADC channel select bits
 	ADC_set_adjust(ADC_RIGHTADJUST);	// Set left/right adjust bit
@@ -143,7 +143,7 @@ uint8_t read_ADC(uint8_t channel)
 	ADC_finish();
 	
 	temp = ADCL;
-	temp2 = ADCH;
+	ADCH; // both bytes must be read
 	return temp;
 }
 
