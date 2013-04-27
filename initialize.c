@@ -23,11 +23,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301, USA.
  *
- * @section DESCRIPTION
- *
- * This program will test the various components of the Wunderboard when used
- * with the corresponding host test script.
- *
  */
 
 #include "initialize.h"
