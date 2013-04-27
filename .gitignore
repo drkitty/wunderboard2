@@ -24,13 +24,17 @@
 # Hex dumps
 *.hex
 
+# Object-type things directory
+obj
+
+# Dependency-type things directory
+.dep
+
 # Miscellaneous Wunderboard files and directories
 # FIXME: Be more descriptive
 *.map
 *.sym
 *.eep
-obj
-.dep
 
 # Vim swap files
 .*.sw?
