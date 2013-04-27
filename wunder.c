@@ -12,7 +12,7 @@
 #include "types.h"
 #include "usart.h"
 
-int main()
+int main(void)
 {
 	initialize();
 
