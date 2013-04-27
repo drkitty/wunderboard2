@@ -14,7 +14,7 @@
 
 int main(void)
 {
-	initialize();
+	initialize(TRUE);
 
 	while (1) {
 

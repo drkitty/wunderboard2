@@ -46,44 +46,39 @@
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
 
 
-void initialize()
+void initialize(BOOL verbose)
 {
 	CPU_PRESCALE(0);
 
 	USART_init(BAUD_RATE);
 	USART_transmit('\f');	// Send form feed to clear the terminal.
 
-#ifdef VERBOSE_INITIALIZE
-	USART_send_string("WunderBoard initializing...\r\n");
-#endif
+	if (verbose)
+		USART_send_string("WunderBoard initializing...\r\n");
 
-#ifdef VERBOSE_INITIALIZE
-	USART_send_string("\tSetting ADC prescaler and disabling free running "
-			"mode...\r\n");
-#endif
+	if (verbose)
+		USART_send_string("\tSetting ADC prescaler and disabling free running "
+				"mode...\r\n");
 
 	setup_ADC(ADC_PRESCALER_32, FALSE);
 
 
-#ifdef VERBOSE_INITIALIZE
-	USART_send_string("\tEnabling ADC...\r\n");
-#endif
+	if (verbose)
+		USART_send_string("\tEnabling ADC...\r\n");
 
 	ADC_enable();
 
 
-#ifdef VERBOSE_INITIALIZE
-	USART_send_string("\tSetting ADC reference to Vcc...\r\n");
-#endif
+	if (verbose)
+		USART_send_string("\tSetting ADC reference to Vcc...\r\n");
 
 	ADC_set_reference(ADC_REF_VCC);
 
 
 	// Configure IO //
 
-#ifdef VERBOSE_INITIALIZE
-	USART_send_string("\tConfiguring IO...\r\n");
-#endif
+	if (verbose)
+		USART_send_string("\tConfiguring IO...\r\n");
 
 	//DDRx corresponds to PORTx/PINx, dependng on direction of data flow --
 	//PORT for output, PIN for input
@@ -108,9 +103,8 @@ void initialize()
 	OCR1A = 24;
 
 
-#ifdef VERBOSE_INITIALIZE
-	USART_send_string("\tSetting SPI\r\n");
-#endif
+	if (verbose)
+		USART_send_string("\tSetting SPI\r\n");
 
 	//Set the SPI bus appropriately to use the LED array
 	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);

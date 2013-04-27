@@ -1,10 +1,16 @@
 #ifndef INITIALIZE_H
 #define INITIALIZE_H
 
-// Print debug messages over USART
-#define VERBOSE_INITIALIZE
+#include <stdint.h>
+#include "types.h"
 
-// Initialize the Wunderboard. Call this in main() before doing anything else.
-void initialize(void);
+
+/*
+ * Initialize the Wunderboard. Call this in main() before doing anything else.
+ *
+ * verbose: TRUE  = print debug messages (over USART)
+ *          FALSE = don't print debug messages
+ */
+void initialize(BOOL verbose);
 
 #endif
