@@ -71,7 +71,7 @@ ifeq ($(ENV),unix)
 	START = start
 else
 	PROGRAM = "C:/Program Files (x86)/Atmel/Flip 3.4.1/bin/batchisp.exe"
-	PROGRAMFLAGS = -device at90usb646 -hardware USB
+	PROGRAMFLAGS = -device $(MCU) -hardware USB
 	ERASE = -operation erase F
 	FLASH = -operation loadbuffer
 	FLASHSUFFIX = program verify
