@@ -35,6 +35,7 @@ obj
 *.map
 *.sym
 *.eep
+__avr_gdbinit
 
 # Vim swap files
 .*.sw?
