@@ -50,9 +50,6 @@
 
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
 
-// Print debug messages over USART
-#define VERBOSE_INITIALIZE
-
 
 void initialize()
 {
