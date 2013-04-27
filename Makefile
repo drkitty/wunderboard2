@@ -45,7 +45,7 @@
 # Target file name (without extension).
 TARGET = wunder
 
-SRC = $(wildcard *.c)
+SRC := $(wildcard *.c)
 
 
 UNAME = $(shell uname)
