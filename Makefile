@@ -177,6 +177,7 @@ CFLAGS += -fpack-struct
 CFLAGS += -fshort-enums
 CFLAGS += -Wall
 CFLAGS += -Wstrict-prototypes
+CFLAGS += -Werror-implicit-function-declaration
 #CFLAGS += -mshort-calls
 #CFLAGS += -fno-unit-at-a-time
 #CFLAGS += -Wundef
