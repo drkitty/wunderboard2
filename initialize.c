@@ -95,13 +95,6 @@ void initialize(BOOL verbose)
 	PORTE = 0x00;
 	PORTF = 0x00;
 
-	//Set OC1A to toggle
-	TCCR1A = 0b01000000;
-	// Clk/64 and CTC mode
-	TCCR1B = 0b00001011;
-
-	OCR1A = 24;
-
 
 	if (verbose)
 		USART_send_string("\tSetting SPI\r\n");
