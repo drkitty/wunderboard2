@@ -416,7 +416,7 @@ gccversion :
 
 
 # Program the device.
-program: $(TARGET).hex
+program: gccversion sizebefore $(TARGET).hex sizeafter
 	$(PROGRAM) $(PROGRAMFLAGS) $(ERASE)
 	$(PROGRAM) $(PROGRAMFLAGS) $(FLASH) $(TARGET).hex $(FLASHSUFFIX)
 	$(PROGRAM) $(PROGRAMFLAGS) $(START)
