@@ -1,4 +1,4 @@
-/** 
+/**
  * @file
  * @author Matthew Shuman
  * @author Joey Tomlinson
@@ -13,24 +13,25 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301, USA.
- * 
+ *
  * @section DESCRIPTION
- * 
- * Includes functions for setting up and reading the hardware ADC on the attiny26.
- * 
+ *
+ * Includes functions for setting up and reading the hardware ADC on the
+ * attiny26.
+ *
  * @section HARDWARE
  * Target Device: ATTINY26L
- * 
+ *
  */
 #include <avr/io.h>
 
@@ -60,13 +61,13 @@ void ADC_set_prescaler(uint8_t prescale)
 }
 
 void ADC_set_free_running(BOOL free_run)
-{	
+{
 	if (free_run){
 		// Set the auto trigger to free running mdoe
 		CLEARPIN(ADCSRB, ADTS2);
 		CLEARPIN(ADCSRB, ADTS1);
 		CLEARPIN(ADCSRB, ADTS0);
-		
+
 		// Enable auto trigger
 		SETPIN(ADCSRA, ADATE);
 	}
@@ -80,7 +81,7 @@ void ADC_set_reference(uint8_t reference)
 {
 	CLEARPINS(ADMUX, ADC_REF_MASK);
 	SETPINS(ADMUX, (reference & ADC_REF_MASK));
-	
+
 	// First read after changing reference is probably garbage
 	ADC_start();
 	// Wait for the AD conversion to complete
@@ -131,17 +132,17 @@ void setup_ADC(uint8_t prescale, BOOL free_run)
 }
 
 uint8_t read_ADC(uint8_t channel)
-{	
+{
 	uint8_t temp;
-	
+
 	ADC_set_channel(channel);	// Set ADC channel select bits
 	ADC_set_adjust(ADC_RIGHTADJUST);	// Set left/right adjust bit
-	
+
 	ADC_start();
 	// Wait for the AD conversion to complete
 	while (!ADC_done());
 	ADC_finish();
-	
+
 	temp = ADCL;
 	ADCH; // both bytes must be read
 	return temp;
@@ -151,24 +152,24 @@ uint8_t read_ADC_averaged(uint8_t channel, uint8_t samples)
 {
 	uint8_t i;
 	uint16_t accumulator = 0;
-	
+
 	for(i = 0; i < samples; i++){
 		accumulator += read_ADC(channel);
 	}
-	
+
 	return accumulator / samples;
 }
 
 uint16_t read_precise_ADC(uint8_t channel)
-{	
+{
 	ADC_set_channel(channel);	// Set ADC channel select bits
 	ADC_set_adjust(ADC_RIGHTADJUST);	// Set left/right adjust bit
-	
+
 	ADC_start();
 	// Wait for the AD conversion to complete
 	while (!ADC_done());
 	ADC_finish();
-	
+
 	return ADCW;
 }
 
@@ -177,12 +178,12 @@ uint16_t read_precise_ADC_averaged(uint8_t channel, uint8_t samples)
 	uint8_t i;
 	uint16_t total = 0;
 	uint16_t value;
-	
+
 	for (i = 0; i < samples; i++){
 		total += read_precise_ADC(channel);
 	}
-	
+
 	value = total / samples;
-	
+
 	return value;
 }
