@@ -306,12 +306,12 @@ DSTATUS disk_initialize (BYTE drv)	/* Physical drive nmuber (0) */
 
 	if (drv) return STA_NOINIT;			/* Supports only single drive */
 	if (Stat & STA_NODISK) return Stat;	/* No card in the socket */
-	
+
 	//power_on();							/* Force socket power on */
 	PORTB |= 0b11000000;
 	FCLK_SLOW();
 	for (n = 10; n; n--) rcvr_spi();	/* 80 dummy clocks */
-	
+
 	ty = 0;
 	if (send_cmd(CMD0, 0) == 1) {			/* Enter Idle state */
 		Timer1 = 200;						/* Initialization timeout of 1000 msec */
@@ -335,13 +335,13 @@ DSTATUS disk_initialize (BYTE drv)	/* Physical drive nmuber (0) */
 				ty = 0;
 		}
 	}
-	
+
 	CardType = ty;
-	deselect(); 
+	deselect();
 
 	if (ty) {			/* Initialization succeded */
 		Stat &= ~STA_NOINIT;		/* Clear STA_NOINIT */
-		FCLK_FAST(); 
+		FCLK_FAST();
 	} else {			/* Initialization failed */
 		//power_off();
 
@@ -620,4 +620,3 @@ DWORD get_fattime ( void )
 {
 	return 0;
 }
-
