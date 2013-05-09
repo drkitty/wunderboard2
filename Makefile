@@ -37,7 +37,7 @@
 # make filename.i = Create a preprocessed source file for use in submitting
 #                   bug reports to the GCC project.
 #
-# To rebuild project do "make clean" then "make all".
+# To rebuild project do "make clean" then "make".
 #----------------------------------------------------------------------------
 
 
@@ -339,9 +339,6 @@ WINSHELL = cmd
 
 # Define Messages
 # English
-MSG_ERRORS_NONE = Errors: none
-MSG_BEGIN = -------- begin --------
-MSG_END = --------  end  --------
 MSG_SIZE_BEFORE = Size before:
 MSG_SIZE_AFTER = Size after:
 MSG_COFF = Converting to AVR COFF:
