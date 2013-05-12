@@ -37,5 +37,8 @@ obj
 *.eep
 __avr_gdbinit
 
+# ctags tags file
+tags
+
 # Vim swap files
 .*.sw?
