@@ -83,24 +83,17 @@ void initialize(BOOL verbose)
 	//DDRx corresponds to PORTx/PINx, dependng on direction of data flow --
 	//PORT for output, PIN for input
 	DDRA = 0x00;	// Buttons and switches
-	DDRB = 0xE7;	// Red enable, green enable and audio out
-	DDRC = 0xff;	// Discrete LEDs
-	DDRE = 0x47;	// LED Column
+	DDRB = 0b11100111;	// Red enable, green enable and audio out
+	DDRC = 0b11111111;	// Discrete LEDs
+	DDRE = 0b01000111;	// LED Column
 	DDRF = 0x00;	// Accelerometer
 
 	// Disable pullups and set outputs low //
 	PORTA = 0x00;
-	PORTB = 0x01;
-	PORTC = 0x81;
+	PORTB = 0b00000001;
+	PORTC = 0x00;
 	PORTE = 0x00;
 	PORTF = 0x00;
-
-	//Set OC1A to toggle
-	TCCR1A = 0b01000000;
-	// Clk/64 and CTC mode
-	TCCR1B = 0b00001011;
-
-	OCR1A = 24;
 
 
 	if (verbose)
