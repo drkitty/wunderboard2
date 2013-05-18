@@ -31,7 +31,6 @@
 
 #include "adc.h"
 #include "diskio.h"
-#include "types.h"
 #include "usart.h"
 
 // 9600 baud

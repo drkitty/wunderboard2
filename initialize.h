@@ -1,9 +1,7 @@
 #ifndef INITIALIZE_H
 #define INITIALIZE_H
 
-/*#include <stdint.h>*/
 #include <stdbool.h>
-/*#include "types.h"*/
 
 
 /*
