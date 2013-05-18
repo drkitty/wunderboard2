@@ -2,6 +2,7 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <avr/pgmspace.h>
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,7 +15,7 @@
 
 int main(void)
 {
-	initialize(TRUE);
+	initialize(false);
 
 	while (1) {
 
