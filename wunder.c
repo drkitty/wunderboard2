@@ -15,7 +15,7 @@
 
 int main(void)
 {
-	initialize(false);
+	initialize(true);
 
 	while (1) {
 
