@@ -30,7 +30,6 @@
 #include <avr/io.h>
 
 #include "adc.h"
-#include "diskio.h"
 #include "usart.h"
 
 // 9600 baud
